@@ -1,8 +1,17 @@
 package com.zyp.cms.utils;
 
+import java.io.UnsupportedEncodingException;
+import java.util.Date;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StringUtils {
+	/**
+	 * 是否为空
+	 * @param str
+	 * @return
+	 */
 	public boolean isBlank(String str) {
 		if(str==null ||"".equals(str.trim())) {
 			return true;
@@ -10,6 +19,11 @@ public class StringUtils {
 			return false;
 		}
 	}
+	/**
+	 * 随机字母数字
+	 * @param length
+	 * @return
+	 */
 	public static String getCharAndNumr(int length) {    
 		String val = "";
 		Random random = new Random();
@@ -47,68 +61,32 @@ public class StringUtils {
 		return sb.toString();
 	}
 	/**
-	 * 
-	 * @param args
-	 * @throws Exception
+	 * 随机中文
+	 * @throws UnsupportedEncodingException 
 	 */
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public static void main(String[] args) throws Exception {
-		String charAndNumr = StringUtils.getCharAndNumr(10);
-		System.out.println(charAndNumr);
-		Random random = new Random();///随机数
-		String[] rBase = { "0", "1", "2", "3", "4", "5", "6", "7", "8","9", "a", "b", "c", "d", "e", "f" };
-		// 生成第1位的区码
-		int r1 = random.nextInt(3) + 11; //生成11到14之间的随机数
-		String str_r1 = rBase[r1];
-		// 生成第2位的区码
-		int r2;
-		if (r1 == 13) {
-		r2 = random.nextInt(7); //生成0到7之间的随机数
-		} else {
-		r2 = random.nextInt(16); //生成0到16之间的随机数
+	public static String getGb2312(int n) throws UnsupportedEncodingException {
+		String sb="";
+		byte []word=new byte[2];
+		for (int i = 0; i < n; i++) {
+			Random random = new Random();
+			word[0]=(byte) (0xA1+0x10+random.nextInt(39));
+			word[1]=(byte) (0xA1+0x10+random.nextInt(39));
+			String string = new String(word,"GBK");
+			sb+=string;
 		}
-		String str_r2 = rBase[r2];
-		// 生成第1位的位码
-		int r3 = random.nextInt(6) + 10; //生成10到16之间的随机数
-		String str_r3 = rBase[r3];
-		// 生成第2位的位码
-		int r4;
-		if (r3 == 10) {
-		r4 = random.nextInt(15) + 1; //生成1到16之间的随机数
-		} else if (r3 == 15) {
-		r4 = random.nextInt(15); //生成0到15之间的随机数
-		} else {
-		r4 = random.nextInt(16); //生成0到16之间的随机数
-		}
-		String str_r4 = rBase[r4];
-		System.out.println(str_r1 + str_r2 + str_r3 + str_r4);
-		// 将生成机内码转换为汉字
-		byte[] bytes = new byte[2];
-		//将生成的区码保存到字节数组的第1个元素中
-		String str_r12 = str_r1 + str_r2;
-		int tempLow = Integer.parseInt(str_r12, 16);
-		bytes[0] = (byte) tempLow;
-		//将生成的位码保存到字节数组的第2个元素中
-		String str_r34 = str_r3 + str_r4;
-		int tempHigh = Integer.parseInt(str_r34, 16);
-		bytes[1] = (byte) tempHigh;
-		String ctmp = new String(bytes,"gb2312"); //根据字节数组生成汉字
-		System.out.println("生成汉字:" + ctmp);
+		return sb;
+	}
+	/**
+	 * 验证邮箱
+	 */
+	public static Boolean isEmail(String email) {
+		String regEx1 =
+		"^\\s*\\w+(?:\\.{0,1}[\\w-]+)*@[a-zA-Z0-9]+(?:[-.][a-zA-Z0-9]+)*\\.[a-zA-Z]+\\s*$";
+
+		Pattern p = Pattern.compile(regEx1);
+
+		Matcher m = p.matcher(email);
+
+		return m.matches();
 	}
 }
