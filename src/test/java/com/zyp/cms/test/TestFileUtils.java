@@ -15,7 +15,7 @@ public class TestFileUtils {
 	}
 	@Test
 	public void testDelFile() {
-		FileUtils.delFile("F:\\");
+//		FileUtils.delFile("F:\\");
 	}
 	@Test
 	public void testGetProperty() {
@@ -47,9 +47,9 @@ public class TestFileUtils {
 	
 	@Test
 	public void testCopy() throws IOException {
-		String src="D:\\project\\07b\\07b.zip";
-		String dst="D:\\project\\07b\\07b2.zip";
-		FileUtils.copy(src,dst );
+		String src="";
+		String dst="";
+//		FileUtils.copy(src,dst );
 	} 
 	
 }
