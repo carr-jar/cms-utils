@@ -101,4 +101,15 @@ public class StringUtils {
 		boolean find = matcher.find();
 		return find;
 	}
+	/**
+	 * 判断手机号是否为数值，是否长度为11位，开始位必须是1.
+	 */
+	public static boolean judgeTelephoneIsOk(String src){
+		String regex="^[1]\\d{10}$";
+		Pattern compile = Pattern.compile(regex);
+		Matcher matcher = compile.matcher(src);
+		boolean find = matcher.find();
+		return find;
+		
+	}
 }
