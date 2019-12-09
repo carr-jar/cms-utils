@@ -10,7 +10,7 @@ import com.zyp.cms.utils.DateUtils;
 
 public class TestDateUtils {
 	 Scanner sc = new Scanner(System.in); 
-	 @Test
+	//@Test
 	 public void testGetday() throws Exception {
 		String next = sc.next();
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
