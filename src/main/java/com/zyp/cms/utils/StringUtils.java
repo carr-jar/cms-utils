@@ -12,7 +12,7 @@ public class StringUtils {
 	 * @param str
 	 * @return
 	 */
-	public boolean isBlank(String str) {
+	public static boolean isBlank(String str) {
 		if(str==null ||"".equals(str.trim())) {
 			return true;
 		}else {
