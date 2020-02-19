@@ -54,4 +54,9 @@ public class TestDateUtils {
 		DateUtils.isThisWeek(date);
 		
 	}
+	@Test
+	public void testRandomDate() {
+		Date date = DateUtils.randomDate("2017-07-01", "2020-1-16");
+		System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date));
+	}
 }
