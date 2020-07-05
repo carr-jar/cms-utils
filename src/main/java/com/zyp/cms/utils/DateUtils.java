@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.Future;
 
+
 /**
  * 关于日期的工具类
  * @author Administrator
@@ -21,7 +22,7 @@ public class DateUtils {
 	static final int millSecondsPerDay=1000*60*60*24;
 	/**
 	 * 计算剩余天数
-	 * @param args
+	 * @param date
 	 * @throws Exception
 	 */
 	public static Long getday(Date date) {
