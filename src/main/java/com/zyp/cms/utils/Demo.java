@@ -36,5 +36,6 @@ public class Demo {
 		 }
 
 		 System.out.println(str.charAt(0));
+		System.out.println("嘻嘻嘻");
 	}
 }
